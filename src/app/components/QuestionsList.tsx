@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Question} from "../../modules/Question";
-import {QuestionOptionPicker} from "./QuestionOptionPicker";
+import {QuestionAnsweringField} from "./QuestionAnsweringField";
 
 interface Props {
     questions: Array<Question>;
@@ -13,7 +13,8 @@ export const QuestionsList: React.FC<Props> = (props) => {
             <li>
                 <h1>{props.questions[0].topic}</h1>
                 <h5>{props.questions[0].type}</h5>
-                <QuestionOptionPicker
+                <QuestionAnsweringField
+                    questionType={props.questions[0].type}
                     questionOption={props.questions[0].answerOptions}
                     questionId={props.questions[0].id}
                     onOptionSelected={props.onOptionSelected} />
