@@ -1,10 +1,10 @@
 import * as React from 'react';
 
+// Props interface
 interface Props {
     questionId: string;
     questionType: string;
     questionOption: Array<string>;
-    onOptionSelected: (option: string) => void;
 }
 
 export const QuestionAnsweringField: React.FC<Props> = (props) => {
@@ -19,8 +19,8 @@ export const QuestionAnsweringField: React.FC<Props> = (props) => {
                             id={option}
                             type="radio"
                             name={props.questionId + "-question-option"}
-                            value={option}
-                            onChange={event => props.onOptionSelected(option)}/><label htmlFor={option}>{option}</label>
+                            value={option}/>
+                        <label htmlFor={option}>{option}</label>
                     </div>
                 ))
             }
