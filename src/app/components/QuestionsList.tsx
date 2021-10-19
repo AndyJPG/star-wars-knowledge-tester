@@ -6,6 +6,7 @@ interface Props {
     questions: Array<Question>;
 }
 
+// Render question list
 export const QuestionsList: React.FC<Props> = (props) => {
     return (
         <ul>

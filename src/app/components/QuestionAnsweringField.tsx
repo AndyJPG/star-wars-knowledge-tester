@@ -3,6 +3,7 @@ import {QuestionContext} from "../containers/QuestionContext";
 
 // Props interface
 interface Props {
+    answer: string;
     questionId: string;
     questionType: string;
     questionOption: Array<string>;
@@ -30,7 +31,9 @@ export const QuestionAnsweringField: React.FC<Props> = (props) => {
 
             {
                 props.questionType === "TextInput" &&
-                    <textarea />
+                    <textarea
+                        value={props.answer}
+                        onChange={(e) => questionContext.answerOnChange(props.questionId, e.currentTarget.value)} />
             }
         </div>
     )
