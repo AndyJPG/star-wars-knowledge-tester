@@ -8,7 +8,12 @@ import {QuestionContext} from "./QuestionContext";
 function App() {
     // Questions state to store questions data
     const [questions, setQuestions] = React.useState(new Array<Question>());
-    const [error, setError] = React.useState(false);
+    // See if there is error in fetch api
+    const [errorFetchApi, setErrorFetchApi] = React.useState(false);
+    // Check if there is error in submission
+    const [errorSubmission, setErrorSubmission] = React.useState(false);
+    // Check if questions are submitted
+    const [submitted, setSubmitted] = React.useState(false);
 
     React.useEffect(() => {
         // Get all questions
@@ -17,7 +22,10 @@ function App() {
                 // Set questions to state
                 setQuestions(data);
             })
-            .catch(e => setError(true));
+            .catch(e => {
+                console.log(e);
+                setErrorFetchApi(true);
+            });
     }, []);
 
     // Handle answer changes
@@ -34,23 +42,44 @@ function App() {
         setQuestions(newQuestions);
     }
 
+    // Handle submit answer
+    const answerOnSubmit = () => {
+        // Check if any of the question hasn't been answered
+        for (let i = 0; i < questions.length; i++) {
+            const question = questions[i];
+            if (question.answer === undefined || question.answer === "") {
+                setErrorSubmission(true);
+                break;
+            }
+        }
+
+        // If all question has been answered submit answer
+        if (!errorSubmission) {
+            setSubmitted(true);
+        }
+    }
+
     // Check if down fetching questions
-    if (questions.length === 0 && !error) {
+    if (questions.length === 0 && !errorFetchApi) {
         return <p>Loading...</p>;
     }
 
     // Error message
-    if (error){
+    if (errorFetchApi){
         return <p>Something went wrong</p>;
     }
 
     return (
         <QuestionContext.Provider
-            value={{answerOnChange: answerOnChange}}>
+            value={{
+                submitted: submitted,
+                errorOnSubmission: errorSubmission,
+                answerOnChange: answerOnChange
+            }}>
             <div className="App">
                 <QuestionsList
                     questions={questions}/>
-                <button>Submit</button>
+                <button onClick={answerOnSubmit}>Submit</button>
             </div>
         </QuestionContext.Provider>
     );
