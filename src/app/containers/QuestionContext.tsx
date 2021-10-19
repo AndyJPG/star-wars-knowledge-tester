@@ -30,10 +30,10 @@ export const QuestionProvider: React.FC = (props) => {
     const [questions, setQuestions] = React.useState(new Array<Question>());
     // See if there is error in fetch api
     const [errorFetchApi, setErrorFetchApi] = React.useState(false);
-    // Check if there is error in submission
-    const [errorSubmission, setErrorSubmission] = React.useState(false);
     // Check if questions are submitted
     const [submitted, setSubmitted] = React.useState(false);
+    // Check if there is error in submission
+    const [errorSubmission, setErrorSubmission] = React.useState(false);
 
     React.useEffect(() => {
         // Get all questions
