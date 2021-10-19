@@ -1,0 +1,54 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Single select style
+.single-select {
+  border: 2px solid $gray-200;
+  border-radius: 10px;
+  padding: 14px 15px;
+  margin: 40px 0;
+  color: $dark;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  // Style for selected option
+  &.selected {
+    border-color: $dark;
+  }
+
+  // Hide radio button
+  input {
+    display: none;
+  }
+
+  // Icon style
+  i {
+    color: $gray-300;
+    margin-right: 15px;
+    font-size: 1.5rem;
+
+    &.selected {
+      color: $dark;
+    }
+  }
+
+  // Button text
+  p {
+    margin: 0;
+  }
+}
+
+// Textarea style
+.text-input {
+  border: 2px solid $gray-200;
+  border-radius: 10px;
+  padding: 6px 10px;
+  width: 100%;
+
+  // style on focus
+  &:focus {
+    border-color: $dark;
+  }
+}

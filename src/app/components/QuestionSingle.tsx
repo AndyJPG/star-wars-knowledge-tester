@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Question} from "../../modules/Question";
-import {QuestionAnsweringField} from "./QuestionAnsweringField";
+import {QuestionAnsweringField} from "./questionAnsweringField/QuestionAnsweringField";
 import {useContext} from "react";
 import {QuestionContext} from "../containers/QuestionContext";
 
