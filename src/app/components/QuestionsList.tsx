@@ -11,7 +11,9 @@ export const QuestionsList: React.FC<Props> = (props) => {
     return (
         <ul>
             {
-                props.questions.map(question => <QuestionSingle key={question.id} question={question} />)
+                props.questions.map(question =>
+                    <QuestionSingle key={question.id} question={question} />
+                )
             }
         </ul>
     )

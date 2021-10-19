@@ -8,6 +8,7 @@ import {QuestionContext} from "./QuestionContext";
 function App() {
     // Questions state to store questions data
     const [questions, setQuestions] = React.useState(new Array<Question>());
+    const [error, setError] = React.useState(false);
 
     React.useEffect(() => {
         // Get all questions
@@ -16,7 +17,7 @@ function App() {
                 // Set questions to state
                 setQuestions(data);
             })
-            .catch(e => console.log(e));
+            .catch(e => setError(true));
     }, []);
 
     // Handle answer changes
@@ -33,10 +34,14 @@ function App() {
         setQuestions(newQuestions);
     }
 
-    if (questions.length === 0) {
-        return (
-            <p>Loading...</p>
-        )
+    // Check if down fetching questions
+    if (questions.length === 0 && !error) {
+        return <p>Loading...</p>;
+    }
+
+    // Error message
+    if (error){
+        return <p>Something went wrong</p>;
     }
 
     return (
