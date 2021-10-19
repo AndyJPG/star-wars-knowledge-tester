@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Question} from "../../modules/Question";
 import {QuestionAnsweringField} from "./QuestionAnsweringField";
 import {useContext} from "react";
-import {QuestionContext} from "../containers/QuestionContext";
+import {QuestionContext} from "../context/QuestionContext";
 
 interface Props {
     question: Question;

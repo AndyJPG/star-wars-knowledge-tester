@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {QuestionsList} from "../../components/QuestionsList";
-import {QuestionContext} from "../QuestionContext";
+import {QuestionContext} from "../../context/QuestionContext";
 
 export const QuestionContainer: React.FC = (props) => {
     // Question context

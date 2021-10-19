@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {QuestionContext} from "../containers/QuestionContext";
+import {QuestionContext} from "../context/QuestionContext";
 
 // Props interface
 interface Props {
