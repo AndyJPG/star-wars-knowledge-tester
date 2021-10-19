@@ -1,25 +1,29 @@
 import * as React from 'react';
+import {QuestionContext} from "../containers/QuestionContext";
 
 // Props interface
 interface Props {
+    answer: string;
     questionId: string;
     questionType: string;
     questionOption: Array<string>;
 }
 
 export const QuestionAnsweringField: React.FC<Props> = (props) => {
+    const questionContext = React.useContext(QuestionContext);
+
     return (
         <div>
             {
                 props.questionType === "SingleSelect" &&
                 props.questionOption.map(option => (
-                    <div>
+                    <div key={option}>
                         <input
-                            key={option}
                             id={option}
                             type="radio"
                             name={props.questionId + "-question-option"}
-                            value={option}/>
+                            value={option}
+                            onChange={() => questionContext.answerOnChange(props.questionId, option)}/>
                         <label htmlFor={option}>{option}</label>
                     </div>
                 ))
@@ -27,7 +31,9 @@ export const QuestionAnsweringField: React.FC<Props> = (props) => {
 
             {
                 props.questionType === "TextInput" &&
-                    <textarea />
+                    <textarea
+                        value={props.answer}
+                        onChange={(e) => questionContext.answerOnChange(props.questionId, e.currentTarget.value)} />
             }
         </div>
     )
