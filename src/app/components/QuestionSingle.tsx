@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const QuestionSingle: React.FC<Props> = (props) => {
-
     return (
         <li>
             <h1>{props.question.topic}</h1>
