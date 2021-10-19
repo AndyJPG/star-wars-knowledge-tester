@@ -12,10 +12,23 @@ interface Props {
 export const QuestionSingle: React.FC<Props> = (props) => {
     const questionContext = useContext(QuestionContext);
 
+    // Display error message
     const errorMessage = () => {
-        if (questionContext.errorOnSubmission) {
-            if (props.question.answer === undefined || props.question.answer === "") {
-                return <p>Please answer the question!</p>;
+        // Check if there is an error on submission
+        // and answer is empty
+        if (questionContext.errorOnSubmission && props.question.answer === "") {
+            return <p>Please answer the question!</p>;
+        }
+    }
+
+    // Display correct answer
+    const displayCorrectAnswer = () => {
+        // If submitted successfully display if the question was answered correctly
+        if (questionContext.submitted) {
+            if (props.question.correctAnswer.toLowerCase() === props.question.answer.toLowerCase()) {
+                return <p>Correct!</p>;
+            } else {
+                return <p>Incorrect. The correct answer is: {props.question.correctAnswer}</p>
             }
         }
     }
@@ -29,6 +42,7 @@ export const QuestionSingle: React.FC<Props> = (props) => {
                 questionOption={props.question.answerOptions}
                 questionId={props.question.id} />
             {errorMessage()}
+            {displayCorrectAnswer()}
         </li>
     )
 }
