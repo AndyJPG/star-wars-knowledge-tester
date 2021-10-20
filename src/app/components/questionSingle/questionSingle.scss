@@ -4,10 +4,10 @@
 
 // Single question style
 .question {
-  text-align: center;
 
   // Question number indicator style
   .question-number-indicator {
+    text-align: center;
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 1rem;
@@ -16,9 +16,36 @@
 
   // Question topic style
   .question-topic {
+    text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
     letter-spacing: 0.05rem;
     margin-bottom: 40px;
+  }
+}
+
+// Alert message
+.alert {
+  display: inline-block;
+  text-align: left;
+  color: $gray-700;
+  border-radius: 15px;
+  font-weight: 500;
+  padding: 15px 25px;
+  border: 1px solid $gray-700;
+
+  &.alert-danger {
+    background: #fcede9;
+    border-color: #f8dad4;
+  }
+
+  &.alert-warning {
+    background: #fef7ea;
+    border-color: #fae6c5;
+  }
+
+  &.alert-success {
+    background: #eaf7ee;
+    border-color: #e3f3e8;
   }
 }

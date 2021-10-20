@@ -6,6 +6,7 @@ import {useContext} from "react";
 import {QuestionContext} from "../../containers/QuestionContext";
 
 interface Props {
+    questionNo: number;
     question: Question;
 }
 
@@ -18,7 +19,8 @@ export const QuestionSingle: React.FC<Props> = (props) => {
         // Check if there is an error on submission
         // and answer is empty
         if (questionContext.errorOnSubmission && props.question.answer === "") {
-            return <p>Please answer the question!</p>;
+            return <div className="alert alert-warning
+            ">Please answer the question!</div>;
         }
     }
 
@@ -26,17 +28,18 @@ export const QuestionSingle: React.FC<Props> = (props) => {
     const displayCorrectAnswer = () => {
         // If submitted successfully display if the question was answered correctly
         if (questionContext.submitted) {
-            if (props.question.correctAnswer.toLowerCase() === props.question.answer.toLowerCase()) {
-                return <p>Correct!</p>;
+            if (props.question.correctAnswer.toLowerCase() === props.question.answer.toLowerCase().trim()) {
+                return <div className="alert alert-success"><b>Correct!</b></div>;
             } else {
-                return <p>Incorrect. The correct answer is: {props.question.correctAnswer}</p>
+                return <div className="alert alert-danger">
+                    <b>Incorrect</b> - The correct answer is: {props.question.correctAnswer}</div>
             }
         }
     }
 
     return (
         <li className="question">
-            <h5 className="question-number-indicator">QUESTION 2/6</h5>
+            <h5 className="question-number-indicator">QUESTION {props.questionNo}/{questionContext.questions.length}</h5>
             <h3 className="question-topic">{props.question.topic}</h3>
             <QuestionAnsweringField
                 answer={props.question.answer}

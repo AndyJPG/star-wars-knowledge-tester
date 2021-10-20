@@ -11,8 +11,11 @@ export const QuestionsList: React.FC<Props> = (props) => {
     return (
         <ul className="list-unstyled">
             {
-                props.questions.map(question =>
-                    <QuestionSingle key={question.id} question={question} />
+                props.questions.map((question, index) =>
+                    <QuestionSingle
+                        questionNo={index+1}
+                        key={question.id}
+                        question={question} />
                 )
             }
         </ul>
