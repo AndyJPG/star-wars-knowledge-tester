@@ -80,9 +80,6 @@ export const QuestionProvider: React.FC = (props) => {
             return;
         }
 
-        // Total score
-        const totalScore = questions.length;
-
         // Calculate score
         let score = 0;
         questions.forEach(question => {
@@ -96,6 +93,11 @@ export const QuestionProvider: React.FC = (props) => {
 
     // Handle answer changes
     const answerOnChange = (questionId: string, newAnswer: string) => {
+        // Prevent change when questions are already submitted
+        if (submitted) {
+            return;
+        }
+
         // Clone answers array
         const newQuestions = [...questions];
         // Update specific question answer

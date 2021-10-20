@@ -47,6 +47,16 @@ export const QuestionSingle: React.FC<Props> = (props) => {
         props.handleQuestionNavigation!(1);
     }
 
+    // Handle question on submit
+    const handleQuestionOnSubmit = () => {
+        // Check if current question is answered
+        if (props.question.answer === "") {
+            setDisplayWarning(true);
+            return;
+        }
+        questionContext.answerOnSubmit();
+    }
+
     // Display question navigation
     const displayQuestionNav = () => {
         if (props.handleQuestionNavigation === undefined) {
@@ -62,7 +72,7 @@ export const QuestionSingle: React.FC<Props> = (props) => {
         const nextBtn = <button className="btn" onClick={() => checkBeforeNextQuestion()}>Next Question</button>;
 
         // Submit btn
-        const submitBtn = <button className="btn btn-success" onClick={() => questionContext.answerOnSubmit()}>Submit</button>;
+        const submitBtn = <button className="btn btn-success" onClick={() => handleQuestionOnSubmit()}>Submit</button>;
 
         return (
             <div className="question-nav">
