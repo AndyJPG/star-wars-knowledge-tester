@@ -1,0 +1,24 @@
+// Import bootstrap
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Single question style
+.question {
+  text-align: center;
+
+  // Question number indicator style
+  .question-number-indicator {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #aebfda;
+  }
+
+  // Question topic style
+  .question-topic {
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    margin-bottom: 40px;
+  }
+}

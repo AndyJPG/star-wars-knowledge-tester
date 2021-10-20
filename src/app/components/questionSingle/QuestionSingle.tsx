@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {Question} from "../../modules/Question";
-import {QuestionAnsweringField} from "./questionAnsweringField/QuestionAnsweringField";
+import './questionSingle.scss';
+import {Question} from "../../../modules/Question";
+import {QuestionAnsweringField} from "../questionAnsweringField/QuestionAnsweringField";
 import {useContext} from "react";
-import {QuestionContext} from "../containers/QuestionContext";
+import {QuestionContext} from "../../containers/QuestionContext";
 
 interface Props {
     question: Question;
@@ -34,8 +35,9 @@ export const QuestionSingle: React.FC<Props> = (props) => {
     }
 
     return (
-        <li>
-            <h1>{props.question.topic}</h1>
+        <li className="question">
+            <h5 className="question-number-indicator">QUESTION 2/6</h5>
+            <h3 className="question-topic">{props.question.topic}</h3>
             <QuestionAnsweringField
                 answer={props.question.answer}
                 questionType={props.question.type}

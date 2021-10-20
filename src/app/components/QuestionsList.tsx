@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Question} from "../../modules/Question";
-import {QuestionSingle} from "./QuestionSingle";
+import {QuestionSingle} from "./questionSingle/QuestionSingle";
 
 interface Props {
     questions: Array<Question>;
@@ -9,7 +9,7 @@ interface Props {
 // Render question list
 export const QuestionsList: React.FC<Props> = (props) => {
     return (
-        <ul>
+        <ul className="list-unstyled">
             {
                 props.questions.map(question =>
                     <QuestionSingle key={question.id} question={question} />
