@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Question container style
+.question-container {
+
+  .total-score {
+    font-weight: 600;
+    color: $green-400;
+    text-align: center;
+    margin-top: 50px;
+  }
+}
+
