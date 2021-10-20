@@ -62,7 +62,7 @@ export const QuestionAnsweringField: React.FC<Props> = (props) => {
     }
 
     return (
-        <div className="question-answering-field">
+        <div className="question-answering-field" style={{minHeight: questionContext.submitted ? "auto" : "500px"}}>
             {
                 props.questionType === "SingleSelect" && singleSelectOption()
             }

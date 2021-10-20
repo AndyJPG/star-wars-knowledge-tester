@@ -35,6 +35,10 @@
   padding: 15px 25px;
   border: 1px solid $gray-700;
 
+  &.hidden {
+    visibility: hidden;
+  }
+
   &.alert-danger {
     background: #fcede9;
     border-color: #f8dad4;
@@ -48,5 +52,28 @@
   &.alert-success {
     background: #eaf7ee;
     border-color: #e3f3e8;
+  }
+}
+
+// Question navigation style
+.question-nav {
+  display: flex;
+  justify-content: space-between;
+
+  // Button style
+  .btn {
+    border-radius: 10px;
+    background: #6f8ec1;
+    color: white;
+    font-weight: 600;
+    padding: 15px 30px;
+
+    &.disabled {
+      background: $gray-400;
+    }
+  }
+
+  .btn-success {
+    background: $green-500;
   }
 }

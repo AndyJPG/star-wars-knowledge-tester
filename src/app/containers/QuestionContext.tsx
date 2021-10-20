@@ -9,7 +9,7 @@ interface QuestionContextProps {
     errorOnSubmission: boolean;
     errorFetchApi: boolean;
     answerOnSubmit: () => void;
-    showScore: () => void | React.ReactNode;
+    score: () => number | undefined;
     answerOnChange: (questionId: string, answer: string) => void; // Track changes
 }
 
@@ -20,7 +20,7 @@ export const QuestionContext = React.createContext<QuestionContextProps>({
     submitted: false,
     errorFetchApi: false,
     answerOnSubmit: () => {},
-    showScore: () => {},
+    score: (): number | undefined => undefined,
     answerOnChange: (questionId, answer) => {}
 });
 
@@ -74,7 +74,7 @@ export const QuestionProvider: React.FC = (props) => {
     }
 
     // Calculate score
-    const showScore = () => {
+    const score = (): number | undefined => {
         // Return if answer not submitted
         if (!submitted) {
             return;
@@ -91,7 +91,7 @@ export const QuestionProvider: React.FC = (props) => {
             }
         })
 
-        return <p>Score: {score} out of {totalScore}</p>;
+        return score;
     }
 
     // Handle answer changes
@@ -115,7 +115,7 @@ export const QuestionProvider: React.FC = (props) => {
             errorOnSubmission: errorSubmission,
             errorFetchApi: errorFetchApi,
             answerOnSubmit: answerOnSubmit,
-            showScore: showScore,
+            score: score,
             answerOnChange: answerOnChange
         }}>
             {props.children}

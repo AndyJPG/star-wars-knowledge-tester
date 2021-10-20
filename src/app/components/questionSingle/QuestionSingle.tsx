@@ -21,7 +21,7 @@ export const QuestionSingle: React.FC<Props> = (props) => {
         if (props.question.answer !== "" && displayWarning) {
             setDisplayWarning(false);
         }
-    }, [])
+    }, [props.question.answer])
 
     // Display correct answer
     const displayCorrectAnswer = () => {
@@ -49,6 +49,10 @@ export const QuestionSingle: React.FC<Props> = (props) => {
 
     // Display question navigation
     const displayQuestionNav = () => {
+        if (props.handleQuestionNavigation === undefined) {
+            return;
+        }
+
         // Last question btn
         const lastBtn = <button className={`btn ${props.questionNo === 0 && "disabled"}`}
                                 onClick={() => props.handleQuestionNavigation!(-1)}>
@@ -77,7 +81,7 @@ export const QuestionSingle: React.FC<Props> = (props) => {
                 questionType={props.question.type}
                 questionOption={props.question.answerOptions}
                 questionId={props.question.id} />
-            {displayWarning && <div className="alert alert-warning">Please answer the question!</div>}
+            {!questionContext.submitted && <div className={`alert alert-warning ${!displayWarning && "hidden"}`}>Please answer the question!</div>}
             {displayCorrectAnswer()}
             {displayQuestionNav()}
         </div>

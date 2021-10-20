@@ -1,24 +1,14 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
+// Question container style
 .question-container {
-}
 
-// Question navigation style
-.question-nav {
-  display: flex;
-  justify-content: space-between;
-
-  // Button style
-  .btn {
-    border-radius: 10px;
-    background: #6f8ec1;
-    color: white;
+  .total-score {
     font-weight: 600;
-    padding: 15px 30px;
-
-    &.disabled {
-      background: $gray-400;
-    }
+    color: $green-400;
+    text-align: center;
+    margin-top: 50px;
   }
 }
+

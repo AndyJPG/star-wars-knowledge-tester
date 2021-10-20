@@ -25,9 +25,9 @@ export const QuestionContainer: React.FC = (props) => {
     const displayScoreAndAnswer = () => {
         return (
             <>
+                <h3 className="total-score">Total score: {questionContext.score()} out of {questionContext.questions.length}</h3>
                 <QuestionsList
                     questions={questionContext.questions}/>
-                {questionContext.showScore()}
             </>
         )
     }
@@ -44,10 +44,14 @@ export const QuestionContainer: React.FC = (props) => {
 
     return (
         <div className="question-container">
-            <QuestionSingle
-                handleQuestionNavigation={handleQuestionNavigation}
-                questionNo={currentQuestionIndex}
-                question={questionContext.questions[currentQuestionIndex]}/>
+            {
+                questionContext.submitted ?
+                    displayScoreAndAnswer() :
+                    <QuestionSingle
+                        handleQuestionNavigation={handleQuestionNavigation}
+                        questionNo={currentQuestionIndex}
+                        question={questionContext.questions[currentQuestionIndex]}/>
+            }
         </div>
     )
 }

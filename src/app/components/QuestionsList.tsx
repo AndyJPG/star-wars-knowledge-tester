@@ -13,7 +13,7 @@ export const QuestionsList: React.FC<Props> = (props) => {
             {
                 props.questions.map((question, index) =>
                     <QuestionSingle
-                        questionNo={index+1}
+                        questionNo={index}
                         key={question.id}
                         question={question} />
                 )
