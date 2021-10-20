@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+.question-container {
+}
+
+// Question navigation style
+.question-nav {
+  display: flex;
+  justify-content: space-between;
+
+  // Button style
+  .btn {
+    border-radius: 10px;
+    background: #6f8ec1;
+    color: white;
+    font-weight: 600;
+    padding: 15px 30px;
+
+    &.disabled {
+      background: $gray-400;
+    }
+  }
+}

@@ -9,7 +9,7 @@ interface Props {
 // Render question list
 export const QuestionsList: React.FC<Props> = (props) => {
     return (
-        <ul className="list-unstyled">
+        <>
             {
                 props.questions.map((question, index) =>
                     <QuestionSingle
@@ -18,6 +18,6 @@ export const QuestionsList: React.FC<Props> = (props) => {
                         question={question} />
                 )
             }
-        </ul>
+        </>
     )
 }

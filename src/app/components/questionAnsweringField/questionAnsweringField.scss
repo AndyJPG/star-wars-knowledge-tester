@@ -1,6 +1,11 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
+// Questions answering field style
+.question-answering-field {
+  min-height: 500px;
+}
+
 // Single select style
 .single-select {
   border: 2px solid $gray-200;

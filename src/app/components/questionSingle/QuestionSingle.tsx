@@ -2,27 +2,26 @@ import * as React from 'react';
 import './questionSingle.scss';
 import {Question} from "../../../modules/Question";
 import {QuestionAnsweringField} from "../questionAnsweringField/QuestionAnsweringField";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {QuestionContext} from "../../containers/QuestionContext";
 
 interface Props {
     questionNo: number;
     question: Question;
+    handleQuestionNavigation?: (next: number) => void;
 }
 
 // Render single question
 export const QuestionSingle: React.FC<Props> = (props) => {
     const questionContext = useContext(QuestionContext);
+    // Display warning message
+    const [displayWarning, setDisplayWarning] = React.useState(false);
 
-    // Display error message
-    const errorMessage = () => {
-        // Check if there is an error on submission
-        // and answer is empty
-        if (questionContext.errorOnSubmission && props.question.answer === "") {
-            return <div className="alert alert-warning
-            ">Please answer the question!</div>;
+    useEffect(() => {
+        if (props.question.answer !== "" && displayWarning) {
+            setDisplayWarning(false);
         }
-    }
+    }, [])
 
     // Display correct answer
     const displayCorrectAnswer = () => {
@@ -37,17 +36,50 @@ export const QuestionSingle: React.FC<Props> = (props) => {
         }
     }
 
+    // Handle question navigation
+    const checkBeforeNextQuestion = () => {
+        if (props.question.answer === "") {
+            setDisplayWarning(true);
+            return;
+        } else {
+            setDisplayWarning(false);
+        }
+        props.handleQuestionNavigation!(1);
+    }
+
+    // Display question navigation
+    const displayQuestionNav = () => {
+        // Last question btn
+        const lastBtn = <button className={`btn ${props.questionNo === 0 && "disabled"}`}
+                                onClick={() => props.handleQuestionNavigation!(-1)}>
+            Last Question
+        </button>;
+        // Next question btn
+        const nextBtn = <button className="btn" onClick={() => checkBeforeNextQuestion()}>Next Question</button>;
+
+        // Submit btn
+        const submitBtn = <button className="btn btn-success" onClick={() => questionContext.answerOnSubmit()}>Submit</button>;
+
+        return (
+            <div className="question-nav">
+                {lastBtn}
+                {props.questionNo === questionContext.questions.length -1 ? submitBtn : nextBtn}
+            </div>
+        )
+    }
+
     return (
-        <li className="question">
-            <h5 className="question-number-indicator">QUESTION {props.questionNo}/{questionContext.questions.length}</h5>
+        <div className="question">
+            <h5 className="question-number-indicator">QUESTION {props.questionNo+1}/{questionContext.questions.length}</h5>
             <h3 className="question-topic">{props.question.topic}</h3>
             <QuestionAnsweringField
                 answer={props.question.answer}
                 questionType={props.question.type}
                 questionOption={props.question.answerOptions}
                 questionId={props.question.id} />
-            {errorMessage()}
+            {displayWarning && <div className="alert alert-warning">Please answer the question!</div>}
             {displayCorrectAnswer()}
-        </li>
+            {displayQuestionNav()}
+        </div>
     )
 }

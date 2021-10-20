@@ -62,7 +62,7 @@ export const QuestionAnsweringField: React.FC<Props> = (props) => {
     }
 
     return (
-        <div>
+        <div className="question-answering-field">
             {
                 props.questionType === "SingleSelect" && singleSelectOption()
             }
