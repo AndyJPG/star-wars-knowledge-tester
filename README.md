@@ -15,3 +15,5 @@ Open [http://localhost:3000](http://localhost:3000) to view app in the browser.
 To build application for production, run:\
 `npm run build`\
 and a newly created folder `build` will contain production ready files. 
+
+Use `npm run test` to run integration test.
