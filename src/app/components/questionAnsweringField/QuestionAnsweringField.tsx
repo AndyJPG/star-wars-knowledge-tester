@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './questionAnsweringField.scss';
-import {QuestionContext} from "../../containers/QuestionContext";
+import {QuestionContext} from "../../context/QuestionContext";
 
 // Props interface
 interface Props {
@@ -36,7 +36,8 @@ export const QuestionAnsweringField: React.FC<Props> = (props) => {
             return (
                 <label className={labelClass}
                        key={option}
-                       htmlFor={option}>
+                       htmlFor={option}
+                       data-testid={option + "-single-select"}>
                     {icon}
                     <input
                         id={option}

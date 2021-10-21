@@ -7,6 +7,12 @@ const questionsData = '[{"topic": "Select a characters who appear in every Star 
 // Low leve module
 // Specific implementation of getting questions data
 export default class QuestionDao implements QuestionDaoInterface {
+    _questionsData: string;
+
+    constructor() {
+        this._questionsData = questionsData;
+    }
+
     // Get all questions
     getQuestions = () => {
         // Return promise contain all questions
@@ -16,7 +22,7 @@ export default class QuestionDao implements QuestionDaoInterface {
                 () => {
                     try {
                         // Parse json data
-                        const jsonData = JSON.parse(questionsData);
+                        const jsonData = JSON.parse(this._questionsData);
                         // Map json data to question
                         const questions = jsonData.map((data: any) => {
                             // Create new question object
@@ -56,6 +62,10 @@ export default class QuestionDao implements QuestionDaoInterface {
                             }
 
                             // Validate answer options
+                            if (data.type === "SingleSelect" && data.answerOptions === undefined) {
+                                throw new Error("Question option is undefined!");
+                            }
+
                             if (data.answerOptions !== undefined) {
                                 question.answerOptions = data.answerOptions;
                             }

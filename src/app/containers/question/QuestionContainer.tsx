@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './questionContainer.scss';
 import {QuestionsList} from "../../components/QuestionsList";
-import {QuestionContext} from "../QuestionContext";
+import {QuestionContext} from "../../context/QuestionContext";
 import {QuestionSingle} from "../../components/questionSingle/QuestionSingle";
 
 export const QuestionContainer: React.FC = (props) => {

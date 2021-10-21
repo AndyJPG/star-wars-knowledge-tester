@@ -3,7 +3,7 @@ import './questionSingle.scss';
 import {Question} from "../../../modules/Question";
 import {QuestionAnsweringField} from "../questionAnsweringField/QuestionAnsweringField";
 import {useContext, useEffect} from "react";
-import {QuestionContext} from "../../containers/QuestionContext";
+import {QuestionContext} from "../../context/QuestionContext";
 
 interface Props {
     questionNo: number;
@@ -18,7 +18,7 @@ export const QuestionSingle: React.FC<Props> = (props) => {
     const [displayWarning, setDisplayWarning] = React.useState(false);
 
     useEffect(() => {
-        if (props.question.answer !== "" && displayWarning) {
+        if (props.question.answer !== "") {
             setDisplayWarning(false);
         }
     }, [props.question.answer])
