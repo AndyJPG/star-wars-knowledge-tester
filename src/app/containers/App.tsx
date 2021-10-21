@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import {QuestionProvider} from "../context/QuestionContext";
 import {QuestionContainer} from "./question/questionContainer";
 
 function App() {
     return (
-        <div className="app">
+        <div className="app container-lg">
             <QuestionProvider>
                 <QuestionContainer />
             </QuestionProvider>

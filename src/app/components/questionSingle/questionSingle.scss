@@ -1,0 +1,79 @@
+// Import bootstrap
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+// Single question style
+.question {
+  margin-top: 50px;
+
+  // Question number indicator style
+  .question-number-indicator {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #aebfda;
+  }
+
+  // Question topic style
+  .question-topic {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    margin-bottom: 40px;
+  }
+}
+
+// Alert message
+.alert {
+  display: inline-block;
+  text-align: left;
+  color: $gray-700;
+  border-radius: 15px;
+  font-weight: 500;
+  padding: 15px 25px;
+  border: 1px solid $gray-700;
+
+  &.hidden {
+    visibility: hidden;
+  }
+
+  &.alert-danger {
+    background: #fcede9;
+    border-color: #f8dad4;
+  }
+
+  &.alert-warning {
+    background: #fef7ea;
+    border-color: #fae6c5;
+  }
+
+  &.alert-success {
+    background: #eaf7ee;
+    border-color: #e3f3e8;
+  }
+}
+
+// Question navigation style
+.question-nav {
+  display: flex;
+  justify-content: space-between;
+
+  // Button style
+  .btn {
+    border-radius: 10px;
+    background: #6f8ec1;
+    color: white;
+    font-weight: 600;
+    padding: 15px 30px;
+
+    &.disabled {
+      background: $gray-400;
+    }
+  }
+
+  .btn-success {
+    background: $green-500;
+  }
+}
