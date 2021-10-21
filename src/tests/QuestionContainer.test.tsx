@@ -1,5 +1,5 @@
 import {cleanup, render, screen} from "@testing-library/react";
-import {QuestionContainer} from "../app/containers/question/questionContainer";
+import {QuestionContainer} from "../app/containers/question/QuestionContainer";
 
 afterEach(cleanup);
 

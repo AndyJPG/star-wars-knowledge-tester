@@ -36,7 +36,8 @@ export const QuestionAnsweringField: React.FC<Props> = (props) => {
             return (
                 <label className={labelClass}
                        key={option}
-                       htmlFor={option}>
+                       htmlFor={option}
+                       data-testid={option + "-single-select"}>
                     {icon}
                     <input
                         id={option}
