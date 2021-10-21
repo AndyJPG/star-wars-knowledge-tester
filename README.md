@@ -1,6 +1,13 @@
 # StarWars Knowledge Tester
 ### Welcome to StarWars knowledge tester. This App is designed to test your StarWars knowledge.
 
+### Demo
+#### Screenshot
+![Star wars knowledge test app](public/star-wars-screen-shot.png)
+
+#### Video demo link
+[Video Demo](https://youtu.be/SUmybG5SPlE)
+
 ### Steps to run application
 
 In the project directory, run:\
